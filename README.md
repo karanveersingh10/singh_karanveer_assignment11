@@ -1,70 +1,119 @@
-# Getting Started with Create React App
+# Assignment 11 - Docker File
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Student
 
-## Available Scripts
+Karanveer Singh
 
-In the project directory, you can run:
+## Project Name
 
-### `npm start`
+singh_karanveer_assignment11
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Description
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+This project is a React web application created using Create React App and deployed using a Docker container.
 
-### `npm test`
+The application displays an h1 heading with the text:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Codin 1
 
-### `npm run build`
+The application runs on localhost port 7775.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Create React App
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+The React application was created using:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+npx create-react-app singh_karanveer_assignment11
 
-### `npm run eject`
+The project was created inside the WSL Debian environment.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## Dockerfile
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+The Dockerfile creates the development environment using Node.js.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+The Docker working directory is:
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+/singh_karanveer_site
 
-## Learn More
+The Dockerfile uses:
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+WORKDIR /singh_karanveer_site
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Docker Image
 
-### Code Splitting
+The Docker image was built using:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+docker build -f dockerfile -t singh_karanveer_assignment11 .
 
-### Analyzing the Bundle Size
+The Docker image name is:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+singh_karanveer_assignment11
 
-### Making a Progressive Web App
+## Docker Container
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+The required Docker container name is:
 
-### Advanced Configuration
+singh_karanveer_coding_assignment11
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+The container was created using:
 
-### Deployment
+docker run -d --name singh_karanveer_coding_assignment11 -p 7775:3000 singh_karanveer_assignment11
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+## Port Mapping
 
-### `npm run build` fails to minify
+The React application runs on port 3000 inside the Docker container.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Port 7775 on the computer is mapped to port 3000 inside the container.
+
+Port mapping:
+
+7775:3000
+
+The application can be accessed at:
+
+http://localhost:7775
+
+## Checking the Container
+
+Use the following command to check the running container:
+
+docker ps
+
+The required container name is:
+
+singh_karanveer_coding_assignment11
+
+## Checking the WORKDIR
+
+Enter the container using:
+
+docker exec -it singh_karanveer_coding_assignment11 sh
+
+Then run:
+
+pwd
+
+The expected result is:
+
+/singh_karanveer_site
+
+## Stop the Container
+
+docker stop singh_karanveer_coding_assignment11
+
+## Start the Container
+
+docker start singh_karanveer_coding_assignment11
+
+## Final Website
+
+The application is available at:
+
+http://localhost:7775
+
+The webpage displays:
+
+Codin 1
+
+## GitHub Repository
+
+The GitHub repository contains the React application, dockerfile, README.md, and other required project files.
