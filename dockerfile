@@ -10,7 +10,7 @@ COPY . .
 
 ENV HOST=0.0.0.0
 
-EXPOSE 3000
+EXPOSE 7775
 
 CMD ["npm", "start"]
 
