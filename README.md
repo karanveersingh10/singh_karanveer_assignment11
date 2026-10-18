@@ -1,119 +1,88 @@
-# Assignment 11 - Docker File
-
-## Student
-
+Student
 Karanveer Singh
-
-## Project Name
-
+Project
 singh_karanveer_assignment11
-
-## Description
-
-This project is a React web application created using Create React App and deployed using a Docker container.
-
-The application displays an h1 heading with the text:
-
-Codin 1
-
-The application runs on localhost port 7775.
-
-## Create React App
-
-The React application was created using:
+1. Create React App
+I first created the React application using Create React App.
 
 npx create-react-app singh_karanveer_assignment11
 
-The project was created inside the WSL Debian environment.
+The React application displays:
+Codin 1
 
-## Dockerfile
-
-The Dockerfile creates the development environment using Node.js.
-
-The Docker working directory is:
-
-/singh_karanveer_site
-
-The Dockerfile uses:
+2. Dockerfile
+I created a Dockerfile to run the React application inside a Docker
+container.
+FROM node:20
 
 WORKDIR /singh_karanveer_site
 
-## Docker Image
+COPY package*.json ./
 
-The Docker image was built using:
+RUN npm install
 
+COPY . .
+
+ENV HOST=0.0.0.0
+
+EXPOSE 7775
+
+CMD ["npm", "start"]
+What each part does
+- FROM node:20 --- Uses Node.js 20 as the base image.
+- WORKDIR --- Sets the working directory inside the container.
+- **COPY package*.json** --- Copies the package files.
+- RUN npm install --- Installs the required dependencies.
+- COPY . . --- Copies the React project into the container.
+- ENV HOST=0.0.0.0 --- Allows the app to be accessed outside the
+  container.
+- EXPOSE 3000 --- React uses port 3000 inside the container.
+- CMD --- Starts the React application.
+3. Build the Docker Image
+I built the Docker image using:
 docker build -f dockerfile -t singh_karanveer_assignment11 .
-
-The Docker image name is:
-
-singh_karanveer_assignment11
-
-## Docker Container
-
-The required Docker container name is:
-
-singh_karanveer_coding_assignment11
-
-The container was created using:
-
+Image name: singh_karanveer_assignment11
+4. Create the Docker Container
+I created the container using:
 docker run -d --name singh_karanveer_coding_assignment11 -p 7775:3000 singh_karanveer_assignment11
-
-## Port Mapping
-
-The React application runs on port 3000 inside the Docker container.
-
-Port 7775 on the computer is mapped to port 3000 inside the container.
-
-Port mapping:
-
+Container name: singh_karanveer_coding_assignment11
+5. Port Mapping
+The React application runs on port 3000 inside Docker.
+I mapped it to port 7775 on my computer.
 7775:3000
-
-The application can be accessed at:
-
+So the application is opened in the browser at:
 http://localhost:7775
-
-## Checking the Container
-
-Use the following command to check the running container:
-
+6. Check the Container
+I use:
 docker ps
-
-The required container name is:
-
+This shows the running container and its port mapping.
+Expected:
 singh_karanveer_coding_assignment11
-
-## Checking the WORKDIR
-
-Enter the container using:
-
+7775->3000
+7. Check the Docker WORKDIR
+I enter the container using:
 docker exec -it singh_karanveer_coding_assignment11 sh
-
-Then run:
-
+Then:
 pwd
-
-The expected result is:
-
+Expected result:
 /singh_karanveer_site
-
-## Stop the Container
-
-docker stop singh_karanveer_coding_assignment11
-
-## Start the Container
-
-docker start singh_karanveer_coding_assignment11
-
-## Final Website
-
-The application is available at:
-
+To leave the container:
+exit
+8. Final Result
+Open:
 http://localhost:7775
-
 The webpage displays:
-
 Codin 1
-
-## GitHub Repository
-
-The GitHub repository contains the React application, dockerfile, README.md, and other required project files.
+This confirms that the React application is running through Docker.
+9. GitHub
+Repository:
+https://github.com/karanveersingh10/singh_karanveer_assignment11
+Quick Demonstration Order
+1. Show the Dockerfile.
+2. Run docker images to show the image.
+3. Run docker ps to show the container.
+4. Run docker exec -it singh_karanveer_coding_assignment11 sh.
+5. Run pwd to show /singh_karanveer_site.
+6. Open http://localhost:7775.
+7. Show Codin 1 in the browser.
+8. Show the GitHub repository.
